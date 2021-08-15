@@ -1,12 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Sora);
 @import url(https://fonts.googleapis.com/css?family=JetBrains%20Mono);
 html{
-    height: 100%;
-    width: 100%;
+    height: 100% !important;
+    width: 100% !important;
     font-family: 'Sora';
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 
+html,body{
+    overflow-x: hidden;
+}
+h1 {
+    font-weight: 600 !important;
+}
 h1,h4 {
     color:#FDE311;
 }
@@ -17,8 +23,8 @@ h4::before,h1::before{
     content: "## ";
 }
 body{
-    margin: 20px;
-    background-color: 	#0f111a;
+    margin: 20px !important;
+    background-color: 	#0f111a !important;
 }
 footer{
     color: white;
@@ -27,38 +33,41 @@ h1:hover {
     color:white;
 }
 hr {
-    margin: 15px 0;
-    overflow-x: hidden;
-    border: 0;
-    height: 20px;
+    margin: 15px 0 !important;
+    overflow-x: hidden !important;
+    border: 0 !important;
+    height: 20px !important;
   }
   
 hr::after {
     content: "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
     color: #4f4f4f;
 }
-ul{
+ul.skills,ul.project-list{
     color: white;
     font-family: 'JetBrains Mono';
 }
-li{
+li.pr,li.skills{
     overflow-wrap: break-word;
-    list-style: "-";
-    position: relative;
-    padding-left: 20px;
+    list-style: "-" !important;
+    position: relative !important;
+    padding-left: 20px !important;
 }
 .copyright{font-family:'JetBrains Mono';font-size:small;color:wheat;}
-div.nav{
-    margin-top: 40px;
-    margin-left: 40%;
-    margin-bottom: 40px;
-}
+
 a.nava{
-    font-family: 'JetBrains Mono';
-    font-weight: 600;
+    font-weight: 800 !important;
+    font-size: 1.3rem;
+    font-family: 'Sora';
     text-decoration: underline;
     margin-right: 20px;
-    color: rgba(252, 248, 0, 0.729);
+    color: rgba(252, 248, 0, 0.729) !important;
+}
+
+@media only screen and (max-width:800px){
+    a.nava{
+        font-size: 1rem;
+    }
 }
 a.projects{
     margin-right: 20px;
