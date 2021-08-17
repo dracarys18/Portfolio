@@ -6,7 +6,7 @@ mod temp;
 
 use rocket::{http::ContentType, response};
 use rocket_contrib::{serve::StaticFiles, templates::Template};
-use temp::Index;
+use temp::{BlogIndex, Index};
 
 #[get("/")]
 fn index() -> Template {
@@ -14,6 +14,11 @@ fn index() -> Template {
     Template::render("index", &context)
 }
 
+#[get("/blog")]
+fn blog() -> Template {
+    let context = BlogIndex::default();
+    Template::render("blog/index", &context)
+}
 #[get("/favicon.ico")]
 fn favicon<'f>() -> response::Result<'f> {
     let fav = std::fs::File::open("static/favicon.ico").unwrap();
@@ -25,7 +30,7 @@ fn favicon<'f>() -> response::Result<'f> {
 
 fn main() {
     rocket::ignite()
-        .mount("/", routes![index,favicon])
+        .mount("/", routes![index, favicon, blog])
         .attach(Template::fairing())
         .mount("/static", StaticFiles::from("static"))
         .launch();

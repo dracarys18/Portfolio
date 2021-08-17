@@ -76,3 +76,9 @@ a.projects{
 a:hover{
     color: white;
 }
+
+ul.blog, li.list{
+    font-family: 'JetBrains Mono';
+    color: white;
+    list-style:none;
+}
