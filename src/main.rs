@@ -4,6 +4,8 @@
 extern crate rocket;
 mod temp;
 
+use std::io::Cursor;
+
 use rocket::{http::ContentType, response};
 use rocket_contrib::{serve::StaticFiles, templates::Template};
 use temp::{BlogIndex, Index};
@@ -21,10 +23,10 @@ fn blog() -> Template {
 }
 #[get("/favicon.ico")]
 fn favicon<'f>() -> response::Result<'f> {
-    let fav = std::fs::File::open("static/favicon.ico").unwrap();
+    let fav = std::fs::read("static/favicon.ico").unwrap();
     response::Response::build()
         .header(ContentType::Icon)
-        .sized_body(fav)
+        .sized_body(Cursor::new(fav))
         .ok()
 }
 
