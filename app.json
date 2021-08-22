@@ -1,0 +1,9 @@
+{
+  "name": "Portfolio",
+  "description": "My Personal Portfolio",
+  "repository": "https://github.com/dracarys18/portfolio",
+  "success_url": "/",
+  "env": {
+    "BUILDPACK_URL": "https://github.com/emk/heroku-buildpack-rust.git"
+  }
+}
