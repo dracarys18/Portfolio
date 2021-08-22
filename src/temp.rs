@@ -25,6 +25,14 @@ pub struct BlogIndex {
     version: String,
 }
 
+#[derive(Serialize)]
+pub struct PostIndex {
+    title: String,
+    post: String,
+    year: String,
+    version: String,
+}
+
 impl Default for Index {
     fn default() -> Self {
         Self {
@@ -38,7 +46,7 @@ impl Default for Index {
 
 impl Post {
     fn get_posts() -> Vec<Self> {
-        let file_list = glob("articles/*.md").unwrap();
+        let file_list = glob("articles/*.html").unwrap();
         let posts: Vec<Post> = file_list
             .map(|f| Post {
                 release_date: DateTime::<Utc>::from(
@@ -46,7 +54,14 @@ impl Post {
                 )
                 .format("%d/%b/%Y")
                 .to_string(),
-                blog_link: f.as_ref().unwrap().display().to_string(),
+                blog_link: f
+                    .as_ref()
+                    .unwrap()
+                    .display()
+                    .to_string()
+                    .splitn(2, '/')
+                    .collect::<Vec<&str>>()[1]
+                    .to_string(),
                 blog_title: f
                     .as_ref()
                     .unwrap()
@@ -54,7 +69,7 @@ impl Post {
                     .to_string()
                     .splitn(2, '/')
                     .collect::<Vec<&str>>()[1]
-                    .replace(".md", "")
+                    .replace(".html", "")
                     .replace("_", " "),
             })
             .collect();
@@ -67,6 +82,22 @@ impl Default for BlogIndex {
         Self {
             title: "Blog".to_string(),
             posts: Post::get_posts(),
+            year: Local::now().date().year().to_string(),
+            version: rustc_version_runtime::version().to_string(),
+        }
+    }
+}
+
+impl PostIndex {
+    pub fn new(file: String) -> Self {
+        Self {
+            title: file
+                .split('/')
+                .last()
+                .unwrap()
+                .replace(".html", "")
+                .replace("_", " "),
+            post: std::fs::read_to_string(&file).unwrap(),
             year: Local::now().date().year().to_string(),
             version: rustc_version_runtime::version().to_string(),
         }
