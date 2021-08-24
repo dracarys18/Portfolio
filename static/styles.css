@@ -34,7 +34,7 @@ h1:hover {
 }
 hr {
     margin: 15px 0 !important;
-    overflow-x: hidden !important;
+    overflow: hidden !important;
     border: 0 !important;
     height: 20px !important;
   }
