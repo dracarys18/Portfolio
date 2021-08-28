@@ -1,4 +1,5 @@
 use chrono::{DateTime, Datelike, Local, Utc};
+use comrak::{markdown_to_html, ComrakExtensionOptions, ComrakOptions};
 use glob::glob;
 use serde::Serialize;
 
@@ -46,7 +47,7 @@ impl Default for Index {
 
 impl Post {
     fn get_posts() -> Vec<Self> {
-        let file_list = glob("articles/*.html").unwrap();
+        let file_list = glob("articles/*.md").unwrap();
         let posts: Vec<Post> = file_list
             .map(|f| Post {
                 release_date: DateTime::<Utc>::from(
@@ -69,7 +70,7 @@ impl Post {
                     .to_string()
                     .splitn(2, '/')
                     .collect::<Vec<&str>>()[1]
-                    .replace(".html", "")
+                    .replace(".md", "")
                     .replace("_", " "),
             })
             .collect();
@@ -90,14 +91,31 @@ impl Default for BlogIndex {
 
 impl PostIndex {
     pub fn new(file: String) -> Self {
+        let md_text = std::fs::read_to_string(&file).unwrap();
+        let opt = ComrakOptions {
+            extension: ComrakExtensionOptions {
+                strikethrough: true,
+                tagfilter: false,
+                table: true,
+                autolink: true,
+                tasklist: true,
+                superscript: true,
+                header_ids: None,
+                footnotes: false,
+                description_lists: false,
+                front_matter_delimiter: None,
+            },
+            ..Default::default()
+        };
+        let post_html = markdown_to_html(&md_text, &opt);
         Self {
             title: file
                 .split('/')
                 .last()
                 .unwrap()
-                .replace(".html", "")
+                .replace(".md", "")
                 .replace("_", " "),
-            post: std::fs::read_to_string(&file).unwrap(),
+            post: post_html,
             year: Local::now().date().year().to_string(),
             version: rustc_version_runtime::version().to_string(),
         }

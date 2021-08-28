@@ -82,3 +82,6 @@ ul.blog, li.list{
     color: white;
     list-style:none;
 }
+div.blogtext{
+    color:white;
+}
