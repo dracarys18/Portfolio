@@ -49,29 +49,18 @@ impl Post {
     fn get_posts() -> Vec<Self> {
         let file_list = glob("articles/*.md").unwrap();
         let posts: Vec<Post> = file_list
-            .map(|f| Post {
-                release_date: DateTime::<Utc>::from(
-                    f.as_ref().unwrap().metadata().unwrap().modified().unwrap(),
-                )
-                .format("%d/%b/%Y")
-                .to_string(),
-                blog_link: f
-                    .as_ref()
-                    .unwrap()
-                    .display()
-                    .to_string()
-                    .splitn(2, '/')
-                    .collect::<Vec<&str>>()[1]
+            .map(|f| {
+                let fname = f.as_ref().unwrap().display().to_string();
+                let split = fname.splitn(2, '/').collect::<Vec<&str>>()[1];
+                Post {
+                    release_date: DateTime::<Utc>::from(
+                        f.as_ref().unwrap().metadata().unwrap().modified().unwrap(),
+                    )
+                    .format("%d/%b/%Y")
                     .to_string(),
-                blog_title: f
-                    .as_ref()
-                    .unwrap()
-                    .display()
-                    .to_string()
-                    .splitn(2, '/')
-                    .collect::<Vec<&str>>()[1]
-                    .replace(".md", "")
-                    .replace("_", " "),
+                    blog_link: split.replace(".md", ""),
+                    blog_title: split.replace(".md", "").replace("_", " "),
+                }
             })
             .collect();
         posts

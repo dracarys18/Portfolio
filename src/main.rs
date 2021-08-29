@@ -26,7 +26,7 @@ fn blog() -> Template {
 #[get("/blog/<file>")]
 fn get_article(file: String) -> Template {
     let file_path = format!(
-        "{}/articles/{}",
+        "{}/articles/{}.md",
         std::env::current_dir().unwrap().display(),
         file
     );
