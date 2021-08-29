@@ -1,0 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Sora);
+@import url(https://fonts.googleapis.com/css?family=JetBrains%20Mono);
+html{
+    height: 100% !important;
+    width: 100% !important;
+    font-weight: 600 !important;
+}
+html,body{
+    overflow-x: hidden;
+}
+h1 {
+    font-weight: 800 !important;
+    margin-bottom: 30px !important;
+    text-align: center;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Sora';
+    margin-bottom: 20px !important;
+    color:#FDE311;
+}
+
+body{
+    margin: 20px !important;
+    background-color: 	#0f111a !important;
+}
+footer{
+    color: white;
+}
+h1:hover {
+    color:white;
+}
+hr {
+    margin: 15px 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    height: 20px !important;
+  }
+
+hr::after {
+    content: "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+    color: #4f4f4f;
+}
+
+.copyright{font-family:'JetBrains Mono';font-size:small;color:wheat;}
+
+a.nava{
+    font-weight: 800 !important;
+    font-size: 1.3rem;
+    font-family: 'Sora';
+    text-decoration: underline;
+    margin-right: 20px;
+    color: rgba(252, 248, 0, 0.729) !important;
+}
+
+@media only screen and (max-width:800px){
+    a.nava{
+        font-size: 1rem;
+    }
+}
+
+div.blogtext{
+    font-family: 'JetBrains Mono';
+    color:white;
+}
