@@ -1,0 +1,32 @@
+[
+  {
+    "name": "NotKernel",
+    "git": "https://github.com/dracarys18/NotKernel",
+    "description": "This is an optimized kernel for my personal device."
+  },
+  {
+    "name": "ReadList",
+    "git": "https://github.com/dracarys18/Readlist",
+    "description": "An Android App to collect and track your favorite books. Written with Android Native(Kotlin) and Jetpack Compose for UI"
+  },
+  {
+    "name": "KindleAPI",
+    "git": "https://github.com/dracarys18/KindleAPI",
+    "description": "A REST API for tracking Amazon Kindle's OTA Updates and many other infos. Written with Rust using Rocket Framework"
+  },
+  {
+    "name": "This Website",
+    "git": "https://github.com/dracarys18/Portfolio",
+    "description": "My Portfolio site written with HTML,CSS,Rust and Bootstrap framework for some UI stuffs"
+  },
+  {
+    "name": "Group Manager",
+    "git": "https://github.com/dracarys18/grpmr-rs",
+    "description": "A telegram group manager Bot. Written with Rust and MongoDB for Database"
+  },
+  {
+    "name": "TweetBot",
+    "git": "https://github.com/dracarys18/TweetBot",
+    "description": "A telegram bot to stream Tweets from twitter to telegram channel. Written with Python"
+  }
+]

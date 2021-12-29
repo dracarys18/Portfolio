@@ -2,6 +2,7 @@ use chrono::{DateTime, Datelike, Local, Utc};
 use comrak::{markdown_to_html, ComrakExtensionOptions, ComrakOptions};
 use glob::glob;
 use serde::Serialize;
+use crate::projects::Projects;
 
 #[derive(Serialize)]
 pub struct Index {
@@ -9,6 +10,7 @@ pub struct Index {
     title: String,
     year: String,
     version: String,
+    projects: Vec<Projects>
 }
 
 #[derive(Serialize)]
@@ -41,6 +43,7 @@ impl Default for Index {
             title: "Karthikey's Portfolio".to_string(),
             year: Local::now().date().year().to_string(),
             version: rustc_version_runtime::version().to_string(),
+            projects: Projects::default()
         }
     }
 }

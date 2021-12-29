@@ -3,6 +3,7 @@
 #[macro_use]
 extern crate rocket;
 mod temp;
+mod projects;
 
 use std::{ffi::OsStr, io::Cursor, path::PathBuf};
 
