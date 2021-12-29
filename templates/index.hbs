@@ -58,14 +58,11 @@
     <h1>Skills</h1>
     <p>
     <ul class="skills">
-        <li class="skills"><span id="skill-type">Languages:</span>
-            C,C++,Java,Python,Rust,Kotlin,JavaScript/TypeScript,PHP,Bash
-        </li>
-        <li class="skills"><span id="skill-type">Frameworks:</span> Angular,SpringBoot,Flask Python,Rust Rocket,Android
-            Native
-        </li>
-        <li class="skills"><span id="skill-type">Database:</span> MySQL,PostgreSQL,MongoDB,Redis</li>
-        <li class="skills"><span id="skill-type">Tools:</span> Google Cloud,AWS,Heroku,Docker</li>
+        {{#each skill}}
+            <li class="skills"><span id="skill-type">{{this.skilltype}}: </span>
+                {{this.skills}}
+            </li>
+        {{/each}}
     </ul>
     </p>
     <hr/>

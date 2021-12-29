@@ -1,0 +1,18 @@
+[
+  {
+    "skilltype": "Languages",
+    "skills": "C,C++,Java,Python,Rust,Kotlin,JavaScript/TypeScript,PHP,Bash"
+  },
+  {
+    "skilltype": "Frameworks",
+    "skills": "Angular,SpringBoot,Flask Python,Rust Rocket,Android Native"
+  },
+  {
+    "skilltype": "Tools",
+    "skills": "Google Cloud,AWS,Heroku,Docker,Azure"
+  },
+  {
+    "skilltype": "Database",
+    "skills": "MySQL/T-SQL,PostgreSQL,MongoDB,Redis"
+  }
+]

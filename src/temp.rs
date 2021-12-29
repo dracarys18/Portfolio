@@ -1,8 +1,10 @@
-use chrono::{DateTime, Datelike, Local, Utc};
-use comrak::{markdown_to_html, ComrakExtensionOptions, ComrakOptions};
+use chrono::{Datelike, DateTime, Local, Utc};
+use comrak::{ComrakExtensionOptions, ComrakOptions, markdown_to_html};
 use glob::glob;
 use serde::Serialize;
+
 use crate::projects::Projects;
+use crate::skills::Skills;
 
 #[derive(Serialize)]
 pub struct Index {
@@ -10,7 +12,8 @@ pub struct Index {
     title: String,
     year: String,
     version: String,
-    projects: Vec<Projects>
+    projects: Vec<Projects>,
+    skill: Vec<Skills>,
 }
 
 #[derive(Serialize)]
@@ -43,7 +46,8 @@ impl Default for Index {
             title: "Karthikey's Portfolio".to_string(),
             year: Local::now().date().year().to_string(),
             version: rustc_version_runtime::version().to_string(),
-            projects: Projects::default()
+            projects: Projects::default(),
+            skill: Skills::default(),
         }
     }
 }
@@ -59,8 +63,8 @@ impl Post {
                     release_date: DateTime::<Utc>::from(
                         f.as_ref().unwrap().metadata().unwrap().modified().unwrap(),
                     )
-                    .format("%d/%b/%Y")
-                    .to_string(),
+                        .format("%d/%b/%Y")
+                        .to_string(),
                     blog_link: split.replace(".md", ""),
                     blog_title: split.replace(".md", "").replace("_", " "),
                 }

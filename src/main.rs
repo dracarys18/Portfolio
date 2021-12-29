@@ -4,6 +4,7 @@
 extern crate rocket;
 mod temp;
 mod projects;
+mod skills;
 
 use std::{ffi::OsStr, io::Cursor, path::PathBuf};
 
